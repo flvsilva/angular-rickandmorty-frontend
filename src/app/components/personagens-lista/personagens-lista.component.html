@@ -1,26 +1,29 @@
 <div class="container wrapper">
   <div class="row">
-    <!-- Issue table -->
     <div class="col-md-12">
       <div class="inner">
-        <h3>My Issues</h3>
+        <h3>Personagens</h3>
         <table class="table table-bordered">
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Issue Name</th>
-              <th scope="col">Issue Details</th>
-              <th scope="col">Action</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Status</th>
+              <th scope="col">URL</th>
+              <th scope="col">Criação</th>
+              <th scope="col">Episódios</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr *ngFor="let personagem of PersonagensList">
+              <th scope="row">{{ personagem.id }}</th>
+              <td>{{ personagem.name }}</td>
+              <td>{{ personagem.status }}</td>
+              <td>{{ personagem.url }}</td>
+              <td>{{ personagem.created }}</td>
               <td>
                 <button type="button" class="btn btn-success btn-sm move-right">
-                  Edit
-                </button>
-                <button type="button" class="btn btn-danger btn-sm">
-                  Remove
+                  +
                 </button>
               </td>
             </tr>

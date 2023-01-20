@@ -18,9 +18,9 @@ export class PersonagemService {
     }),
   };
 
-  GetPersonagem(name: any): Observable<Personagem> {
+  GetPersonagens(): Observable<Personagem> {
     return this.http
-      .get<Personagem>(this.baseurl + '/personagem/' + name)
+      .get<Personagem>('https://rickandmortyapi.com/api/character')
       .pipe(retry(1), catchError(this.errorHandl));
   }
 

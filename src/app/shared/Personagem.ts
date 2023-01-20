@@ -4,4 +4,5 @@ export class Personagem {
   status: string;
   url: string;
   created: string;
+  info: string;
 }

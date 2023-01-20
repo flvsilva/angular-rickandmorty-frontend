@@ -15,7 +15,7 @@ export class PersonagensListaComponent implements OnInit {
   constructor(public personagemService: PersonagemService) {}
 
   loadPersonagens() {
-    return this.personagemService.GetPersonagem('').subscribe((data: {}) => {
+    return this.personagemService.GetPersonagens().subscribe((data: {}) => {
       this.PersonagensList = data;
     });
   }
