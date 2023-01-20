@@ -2,30 +2,25 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { PersonagemService } from './personagem.service';
 
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
-import { ProductListComponent } from './product-list/product-list.component';
+import { PersonagensListaComponent } from './components/personagens-lista/personagens-lista.component';
 
 @NgModule({
   imports: [
     BrowserModule,
+    HttpClientModule,
     ReactiveFormsModule,
-    RouterModule.forRoot([
-      { path: '', component: ProductListComponent },
-    ])
+    RouterModule.forRoot([{ path: '', component: PersonagensListaComponent }]),
   ],
-  declarations: [
-    AppComponent,
-    TopBarComponent,
-    ProductListComponent
-  ],
-  bootstrap: [
-    AppComponent
-  ]
+  declarations: [AppComponent, TopBarComponent, PersonagensListaComponent],
+  providers: [PersonagemService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
-
+export class AppModule {}
 
 /*
 Copyright Google LLC. All Rights Reserved.
