@@ -8,7 +8,7 @@ import { retry, catchError } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class PersonagemService {
-  baseurl = 'http://localhost:8080/api/personagens';
+  baseurl = 'https://java-rickandmorty-backend.herokuapp.com/api/personagens';
 
   constructor(private http: HttpClient) {}
 
@@ -19,6 +19,12 @@ export class PersonagemService {
   };
 
   GetPersonagens(): Observable<Personagem> {
+    return this.http
+      .get<Personagem>(this.baseurl)
+      .pipe(retry(1), catchError(this.errorHandl));
+  }
+
+  GetPersonagemFiltro(): Observable<Personagem> {
     return this.http
       .get<Personagem>(this.baseurl)
       .pipe(retry(1), catchError(this.errorHandl));
