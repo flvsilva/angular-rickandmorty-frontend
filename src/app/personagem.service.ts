@@ -8,7 +8,7 @@ import { retry, catchError } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class PersonagemService {
-  baseurl = 'http://localhost:3000';
+  baseurl = 'http://localhost:8080/api/personagens';
 
   constructor(private http: HttpClient) {}
 
@@ -20,7 +20,7 @@ export class PersonagemService {
 
   GetPersonagens(): Observable<Personagem> {
     return this.http
-      .get<Personagem>('https://rickandmortyapi.com/api/character')
+      .get<Personagem>(this.baseurl)
       .pipe(retry(1), catchError(this.errorHandl));
   }
 
