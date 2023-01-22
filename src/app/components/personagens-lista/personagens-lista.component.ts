@@ -8,6 +8,7 @@ import { PersonagemService } from '../../personagem.service';
 })
 export class PersonagensListaComponent implements OnInit {
   PersonagensList: any = [];
+  name = '';
 
   ngOnInit() {
     this.loadPersonagens();
@@ -15,8 +16,16 @@ export class PersonagensListaComponent implements OnInit {
   constructor(public personagemService: PersonagemService) {}
 
   loadPersonagens() {
-    return this.personagemService.GetPersonagens().subscribe((data: {}) => {
+    return this.personagemService.getPersonagens().subscribe((data: {}) => {
       this.PersonagensList = data;
     });
+  }
+
+  loadPersonagensPorNome(): void {
+    this.personagemService
+      .getPersonagensFiltro(this.name)
+      .subscribe((data: {}) => {
+        this.PersonagensList = data;
+      });
   }
 }

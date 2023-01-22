@@ -4,12 +4,13 @@ import { Personagem } from './shared/Personagem';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
+const baseurl =
+  'https://java-rickandmorty-backend.herokuapp.com/api/personagens';
+
 @Injectable({
   providedIn: 'root',
 })
 export class PersonagemService {
-  baseurl = 'https://java-rickandmorty-backend.herokuapp.com/api/personagens';
-
   constructor(private http: HttpClient) {}
 
   httpOptions = {
@@ -18,15 +19,15 @@ export class PersonagemService {
     }),
   };
 
-  GetPersonagens(): Observable<Personagem> {
+  getPersonagens(): Observable<Personagem> {
     return this.http
-      .get<Personagem>(this.baseurl)
+      .get<Personagem>(baseurl)
       .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  GetPersonagemFiltro(): Observable<Personagem> {
+  getPersonagensFiltro(name: any): Observable<Personagem> {
     return this.http
-      .get<Personagem>(this.baseurl)
+      .get<Personagem>(`${baseurl}/${name}`)
       .pipe(retry(1), catchError(this.errorHandl));
   }
 
