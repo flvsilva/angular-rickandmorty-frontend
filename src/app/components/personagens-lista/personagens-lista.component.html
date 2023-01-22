@@ -40,6 +40,14 @@
               <td *ngIf="!rowhidden">{{ personagem.url }}</td>
               <td *ngIf="!rowhidden">{{ personagem.created }}</td>
               <div *ngIf="!rowhidden">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Air date</th>
+                  <th scope="col">Episode</th>
+                  <th scope="col">URL</th>
+                  <th scope="col">Created</th>
+                </tr>
                 <tr *ngFor="let episode of personagem.episodes">
                   <td>{{ episode.id }}</td>
                   <td>{{ episode.name }}</td>
