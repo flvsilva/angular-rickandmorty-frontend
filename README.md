@@ -1,3 +1,6 @@
 # angular-rickandmorty-frontend
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/angular-wcwsws)
+## Desafio técnico - Iterative
+
+### CD & hosting by netlify:
+https://angular-rickandmorty-iterative.netlify.app
