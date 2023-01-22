@@ -7,18 +7,17 @@
           <input
             type="text"
             class="form-control"
-            placeholder="Buscar por Nome"
             [(ngModel)]="name"
+            placeholder="Buscar por Nome"
           />
-          <div class="input-group-append">
-            <button
-              class="btn btn-outline-secondary"
-              type="button"
-              (click)="loadPersonagensPorNome()"
-            >
-              Buscar
-            </button>
-          </div>
+          <span>&nbsp;&nbsp; </span>
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="loadPersonagensPorNome()"
+          >
+            Buscar
+          </button>
         </div>
 
         <table class="table table-bordered">
@@ -27,9 +26,10 @@
               <th scope="col">#</th>
               <th scope="col">Nome</th>
               <th scope="col">Status</th>
-              <th scope="col">URL</th>
-              <th scope="col">Criação</th>
-              <th scope="col">Episódios</th>
+              <th scope="col" *ngIf="!rowhidden">URL</th>
+              <th scope="col" *ngIf="!rowhidden">Criação</th>
+              <th scope="col" *ngIf="!rowhidden">Episódios</th>
+              <th scope="col">Detalhes</th>
             </tr>
           </thead>
           <tbody>
@@ -37,10 +37,15 @@
               <th scope="row">{{ personagem.id }}</th>
               <td>{{ personagem.name }}</td>
               <td>{{ personagem.status }}</td>
-              <td>{{ personagem.url }}</td>
-              <td>{{ personagem.created }}</td>
+              <td *ngIf="!rowhidden">{{ personagem.url }}</td>
+              <td *ngIf="!rowhidden">{{ personagem.created }}</td>
+              <td *ngIf="!rowhidden">{{ personagem.episodes.name }}</td>
               <td>
-                <button type="button" class="btn btn-success btn-sm move-right">
+                <button
+                  type="button"
+                  class="btn btn-success btn-sm move-right"
+                  (click)="rowhidden = !rowhidden"
+                >
                   +
                 </button>
               </td>

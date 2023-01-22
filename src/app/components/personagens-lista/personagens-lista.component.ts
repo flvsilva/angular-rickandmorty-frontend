@@ -9,7 +9,7 @@ import { PersonagemService } from '../../personagem.service';
 export class PersonagensListaComponent implements OnInit {
   PersonagensList: any = [];
   name = '';
-
+  rowhidden = true;
   ngOnInit() {
     this.loadPersonagens();
   }
@@ -26,6 +26,7 @@ export class PersonagensListaComponent implements OnInit {
       .getPersonagensFiltro(this.name)
       .subscribe((data: {}) => {
         this.PersonagensList = data;
+        console.log(data);
       });
   }
 }
