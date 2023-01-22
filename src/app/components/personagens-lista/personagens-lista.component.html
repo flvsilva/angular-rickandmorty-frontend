@@ -39,7 +39,16 @@
               <td>{{ personagem.status }}</td>
               <td *ngIf="!rowhidden">{{ personagem.url }}</td>
               <td *ngIf="!rowhidden">{{ personagem.created }}</td>
-              <td *ngIf="!rowhidden">{{ personagem.episodes.name }}</td>
+              <div *ngIf="!rowhidden">
+                <tr *ngFor="let episode of personagem.episodes">
+                  <td>{{ episode.id }}</td>
+                  <td>{{ episode.name }}</td>
+                  <td>{{ episode.air_date }}</td>
+                  <td>{{ episode.episode }}</td>
+                  <td>{{ episode.url }}</td>
+                  <td>{{ episode.created }}</td>
+                </tr>
+              </div>
               <td>
                 <button
                   type="button"

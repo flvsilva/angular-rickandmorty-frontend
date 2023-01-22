@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Personagem } from 'src/app/shared/Personagem';
 import { PersonagemService } from '../../personagem.service';
 
 @Component({
@@ -16,17 +17,14 @@ export class PersonagensListaComponent implements OnInit {
   constructor(public personagemService: PersonagemService) {}
 
   loadPersonagens() {
-    return this.personagemService.getPersonagens().subscribe((data: {}) => {
+    return this.personagemService.getPersonagens().subscribe((data: any) => {
       this.PersonagensList = data;
     });
   }
 
   loadPersonagensPorNome(): void {
-    this.personagemService
-      .getPersonagensFiltro(this.name)
-      .subscribe((data: {}) => {
-        this.PersonagensList = data;
-        console.log(data);
-      });
+    this.personagemService.getPersonagensFiltro(this.name).subscribe((data) => {
+      this.PersonagensList = data;
+    });
   }
 }
