@@ -6,7 +6,7 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
 const baseurl =
-  'https://java-rickandmorty-backend.herokuapp.com/api/personagens';
+  'https://java-rickandmorty-backend-production.up.railway.app/api/personagens';
 
 @Injectable({
   providedIn: 'root',
